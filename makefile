@@ -1,5 +1,3 @@
-# Makefile for building and running the Demo project
-
 CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -pedantic
 
@@ -32,10 +30,12 @@ $(TEST_EXE): $(TEST_SRC)
 	@echo "Building tests..."
 	$(CXX) $(CXXFLAGS) -I. -o $(TEST_EXE) $(TEST_SRC)
 
-# 'make valgrind' – run a memory-leak check on the demo
-valgrind: $(MAIN_EXE)
-	@echo "Checking for memory leaks with Valgrind..."
+# 'make valgrind' – run a memory-leak check on both Demo ו–Tests
+valgrind: $(MAIN_EXE) $(TEST_EXE)
+	@echo "Checking Demo for memory leaks with Valgrind..."
 	valgrind --leak-check=full ./$(MAIN_EXE)
+	@echo "Checking Tests for memory leaks with Valgrind..."
+	valgrind --leak-check=full ./$(TEST_EXE)
 
 # 'make clean' – remove all compiled binaries and object files
 clean:
