@@ -1,7 +1,7 @@
 # Container and Iterators Project (Assignment 4)
 
--**Author:** Dor Cohen. 
--**Default Template Type:** `int` (supports any comparable type)
+**Author:** Dor Cohen
+**Default Template Type:** `int` (supports any comparable type)
 
 ---
 
@@ -24,6 +24,26 @@ Each of the following iterators supports `begin()` and `end()` and throws `std::
 - **SideCrossOrderIterator** – Alternating smallest/largest (e.g. `[1, 15, 2, 7, 6]`).
 - **ReverseOrderIterator** – Reverse of insertion order.
 - **MiddleOutOrderIterator** – Starts from middle, alternates left/right (e.g. `[6, 15, 1, 7, 2]`).
+
+---
+
+### Supported Operators in Iterators
+
+Each iterator in this project implements the standard iterator interface:
+
+- `operator*()` – Dereferences the iterator to return the current element.  
+  Throws `std::out_of_range` if the iterator is at the end.
+
+- `operator++()` – Prefix increment. Advances the iterator to the next element.  
+  Throws `std::out_of_range` if incrementing past the end.
+
+- `operator++(int)` – Postfix increment. Advances and returns the previous state.
+
+- `operator==()` and `operator!=()` – Compare two iterators for equality or inequality.  
+  Equality means both the container and the index are the same.
+
+All iterators behave consistently with the C++ STL style:  
+when `begin() == end()` the iteration is complete, and dereferencing is invalid.
 
 ---
 
