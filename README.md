@@ -1,7 +1,7 @@
 # Container and Iterators Project (Assignment 4)
 
-**Author:** Dor Cohen 
-**Default Template Type:** `int` (supports any comparable type)
+-**Author:** Dor Cohen. 
+-**Default Template Type:** `int` (supports any comparable type)
 
 ---
 
