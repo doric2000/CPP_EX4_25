@@ -26,20 +26,20 @@ int main() {
     }
     std::cout << std::endl;
 
-    for (auto it = container.begin_reverse_order(); it != container.end_reverse_order(); ++it) {
-        std::cout << *it << ' ';  // 2 1 6 15 7
-    }
-    std::cout << std::endl;
+    // for (auto it = container.begin_reverse_order(); it != container.end_reverse_order(); ++it) {
+    //     std::cout << *it << ' ';  // 2 1 6 15 7
+    // }
+    // std::cout << std::endl;
 
     for (auto it = container.begin_order(); it != container.end_order(); ++it) {
         std::cout << *it << ' ';  // 7 15 6 1 2
     }
     std::cout << std::endl;
 
-    for (auto it = container.begin_middle_out_order(); it != container.end_middle_out_order(); ++it) {
-        std::cout << *it << ' ';  // 6 15 1 7 2
-    }
-    std::cout << std::endl;
+    // for (auto it = container.begin_middle_out_order(); it != container.end_middle_out_order(); ++it) {
+    //     std::cout << *it << ' ';  // 6 15 1 7 2
+    // }
+    // std::cout << std::endl;
 
   
 
