@@ -4,6 +4,7 @@
 #include <stdexcept> // to use exceptions
 #include <vector> // to store elements.
 #include <algorithm>
+#include <ostream> // to print
 
 #include "OrderIterator.hpp"
 #include "AscendingOrderIterator.hpp"
@@ -32,7 +33,7 @@ namespace ariel {
         
 
         private:
-            std::vector<T> data; // בהתחלה אפשר להשתמש ב-vector כדי להתמקד בלוגיקה
+            std::vector<T> data; 
         public:
             MyContainer() : data{} {}
 
@@ -43,7 +44,12 @@ namespace ariel {
             }
 
             void remove(const T& value){
-                
+                auto newEnd = std::remove(data.begin(), data.end(), value); // logicly moves all elemets that are not value to the start of the vector.
+                                                                            // and returns an iterator that points to where the removal values starts.
+                if (newEnd == data.end()) {
+                    throw std::runtime_error("Value to remove not found in container");
+                }
+                data.erase(newEnd, data.end());
             }
 
             size_t size() const noexcept{
@@ -51,7 +57,13 @@ namespace ariel {
             }
 
             friend std::ostream& operator<<(std::ostream& os, const MyContainer<T>& c){
-
+                os << "[";
+                for (size_t i = 0; i < c.data.size(); ++i) {
+                    os << c.data[i];
+                    if (i + 1 < c.data.size()) os << ", ";
+                }
+                os << "]";
+                return os;
             }
 
             OrderIterator<T> begin_order() {
