@@ -9,6 +9,7 @@
 #include "AscendingOrderIterator.hpp"
 #include "DescendingOrderIterator.hpp"
 #include "SideCrossOrderIterator.hpp"
+#include "ReverseOrderIterator.hpp"
 
 namespace ariel {
     template<typename T = int> //should default be int
@@ -75,6 +76,14 @@ namespace ariel {
 
             SideCrossOrderIterator<T> end_side_cross_order() {
                 return SideCrossOrderIterator(data,data.size());
+            }
+
+            ReverseOrderIterator<T> begin_reverse_order() {
+                return ReverseOrderIterator(data,0);
+            }
+
+            ReverseOrderIterator<T> end_reverse_order() {
+                return ReverseOrderIterator(data,data.size());
             }
 
 
