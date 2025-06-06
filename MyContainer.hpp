@@ -1,3 +1,5 @@
+//dor.cohen15@msmail.ariel.ac.il
+
 #ifndef MYCONTAINER_HPP
 #define MYCONTAINER_HPP
 
@@ -44,6 +46,9 @@ namespace ariel {
             }
 
             void remove(const T& value){
+                if (this->size() == 0 )
+                    throw std::runtime_error("Container is empty");
+                
                 auto newEnd = std::remove(data.begin(), data.end(), value); // logicly moves all elemets that are not value to the start of the vector.
                                                                             // and returns an iterator that points to where the removal values starts.
                 if (newEnd == data.end()) {
@@ -57,6 +62,11 @@ namespace ariel {
             }
 
             friend std::ostream& operator<<(std::ostream& os, const MyContainer<T>& c){
+                if (c.size() == 0)
+                {
+                    os << "[]";
+                    return os;
+                }
                 os << "[";
                 for (size_t i = 0; i < c.data.size(); ++i) {
                     os << c.data[i];
@@ -66,52 +76,52 @@ namespace ariel {
                 return os;
             }
 
-            OrderIterator<T> begin_order() {
+            OrderIterator<T> begin_order () const {
                 return OrderIterator(this, 0);
             }
             
-            OrderIterator<T> end_order() {
+            OrderIterator<T> end_order () const {
                 return OrderIterator(this, data.size());
             }
 
-            AscendingOrderIterator<T> begin_ascending_order() {
+            AscendingOrderIterator<T> begin_ascending_order () const{
                 return AscendingOrderIterator(data,0);
             }
 
-            AscendingOrderIterator<T> end_ascending_order() {
+            AscendingOrderIterator<T> end_ascending_order () const{
                 return AscendingOrderIterator(data,data.size());
             }
 
-            DescendingOrderIterator<T> begin_descending_order() {
+            DescendingOrderIterator<T> begin_descending_order () const {
                 return DescendingOrderIterator(data,0);
             }
 
-            DescendingOrderIterator<T> end_descending_order() {
+            DescendingOrderIterator<T> end_descending_order () const{
                 return DescendingOrderIterator(data,data.size());
             }
 
-            SideCrossOrderIterator<T> begin_side_cross_order() {
+            SideCrossOrderIterator<T> begin_side_cross_order () const{
                 return SideCrossOrderIterator(data,0);
             }
 
-            SideCrossOrderIterator<T> end_side_cross_order() {
+            SideCrossOrderIterator<T> end_side_cross_order () const{
                 return SideCrossOrderIterator(data,data.size());
             }
 
-            ReverseOrderIterator<T> begin_reverse_order() {
+            ReverseOrderIterator<T> begin_reverse_order () const{
                 return ReverseOrderIterator(data,0);
             }
 
-            ReverseOrderIterator<T> end_reverse_order() {
+            ReverseOrderIterator<T> end_reverse_order () const{
                 return ReverseOrderIterator(data,data.size());
             }
 
 
-            MiddleOutOrderIterator<T> begin_middle_out_order() {
+            MiddleOutOrderIterator<T> begin_middle_out_order () const {
                 return MiddleOutOrderIterator(data,0);
             }
 
-            MiddleOutOrderIterator<T> end_middle_out_order() {
+            MiddleOutOrderIterator<T> end_middle_out_order () const{
                 return MiddleOutOrderIterator(data,data.size());
             }
 

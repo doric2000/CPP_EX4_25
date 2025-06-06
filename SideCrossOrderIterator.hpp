@@ -1,3 +1,5 @@
+//dor.cohen15@msmail.ariel.ac.il
+
 #pragma once
 
 #include "MyContainer.hpp"
@@ -34,6 +36,10 @@ public:
     SideCrossOrderIterator(std::vector<T> all_data, std::size_t idx = 0)
         : sorted_data(std::move(all_data)), index(idx)
     {
+        //check that the vector is not empty.
+        if (sorted_data.empty()) {
+            return;
+        }
         // first we will sort by Ascending order.
         std::sort(sorted_data.begin(), sorted_data.end()); 
         

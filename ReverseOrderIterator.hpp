@@ -1,3 +1,5 @@
+//dor.cohen15@msmail.ariel.ac.il
+
 #pragma once
 
 #include "MyContainer.hpp"
@@ -34,6 +36,9 @@ public:
     ReverseOrderIterator(std::vector<T> all_data, std::size_t idx = 0)
         : sorted_data(std::move(all_data)), index(idx)
     {
+        if (sorted_data.empty()) {
+            return;
+        }
         // first we will sort by reversed order.
         std::reverse(sorted_data.begin(), sorted_data.end()); 
     }

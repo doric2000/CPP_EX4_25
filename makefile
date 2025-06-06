@@ -1,27 +1,43 @@
-# Makefile for building and running Demo.cpp
+# Makefile for building and running the Demo project
 
-# Compiler and flags
 CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -pedantic
 
-# Target executable name
-TARGET   := Demo
+# Source and binary for the demo
+MAIN_SRC := Demo.cpp
+MAIN_EXE := demo
 
-# Source files
-SRC      := Demo.cpp
+# Test source and executable
+TEST_SRC := test.cpp
+TEST_EXE := test_runner
 
-.PHONY: all run clean
+.PHONY: Main test valgrind clean
 
-all: $(TARGET)
+# 'make Main' will build the demo and then run it
+Main: $(MAIN_EXE)
+	@echo "Running Demo..."
+	./$(MAIN_EXE)
 
-# Build the demo executable
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+# Build the demo executable from Demo.cpp
+$(MAIN_EXE): $(MAIN_SRC)
+	$(CXX) $(CXXFLAGS) -I. -o $(MAIN_EXE) $(MAIN_SRC)
 
-# Run the demo program
-run: $(TARGET)
-	./$(TARGET)
+# 'make test' – will build (if needed) and run the test executable
+test: $(TEST_EXE)
+	@echo "Running unit tests..."
+	./$(TEST_EXE)
 
-# Clean up generated files
+# Compile the test executable from test.cpp
+$(TEST_EXE): $(TEST_SRC)
+	@echo "Building tests..."
+	$(CXX) $(CXXFLAGS) -I. -o $(TEST_EXE) $(TEST_SRC)
+
+# 'make valgrind' – run a memory-leak check on the demo
+valgrind: $(MAIN_EXE)
+	@echo "Checking for memory leaks with Valgrind..."
+	valgrind --leak-check=full ./$(MAIN_EXE)
+
+# 'make clean' – remove all compiled binaries and object files
 clean:
-	@rm -f $(TARGET)
+	@echo "Cleaning up..."
+	@rm -f $(MAIN_EXE) $(TEST_EXE) *.o
