@@ -1,7 +1,7 @@
 # Container and Iterators Project (Assignment 4)
 
-**Author:** Dor Cohen
-**Default Template Type:** `int` (supports any comparable type)
+**Author:** Dor Cohen  <br>
+**Default Template Type:** `int` (supports any comparable type)  
 
 ---
 
@@ -70,7 +70,7 @@ when `begin() == end()` the iteration is complete, and dereferencing is invalid.
 
 - `make Main` – Build and run the demo program.
 - `make test` – Build and run unit tests (requires `doctest.h`).
-- `make valgrind` – Check for memory leaks.
+- `make valgrind` – Check for memory leaks on the Demo and the Tests.
 - `make clean` – Remove generated binaries.
 
 ---
