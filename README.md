@@ -75,31 +75,6 @@ when `begin() == end()` the iteration is complete, and dereferencing is invalid.
 
 ---
 
-## Demo Usage
-
-```cpp
-MyContainer<int> c;
-c.addElement(7);
-c.addElement(15);
-c.addElement(6);
-c.addElement(1);
-c.addElement(2);
-
-// Insertion: 7 15 6 1 2
-for (auto it = c.begin_order(); it != c.end_order(); ++it)
-    std::cout << *it << ' ';
-
-// Ascending: 1 2 6 7 15
-for (auto it = c.begin_ascending_order(); it != c.end_ascending_order(); ++it)
-    std::cout << *it << ' ';
-
-// Middle-out: 6 15 1 7 2
-for (auto it = c.begin_middle_out_order(); it != c.end_middle_out_order(); ++it)
-    std::cout << *it << ' ';
-```
-
----
-
 ## Unit Tests
 
 The file `test.cpp` covers:
