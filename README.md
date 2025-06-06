@@ -97,6 +97,6 @@ The file `test.cpp` covers:
 
 ## License & Academic Integrity
 
-This project was developed as part of a university assignment. Any use of AI or external help is declared according to the academic honesty policy.
+This project was developed as part of a university assignment.
 
 ```
