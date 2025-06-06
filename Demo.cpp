@@ -36,10 +36,10 @@ int main() {
     }
     std::cout << std::endl;
 
-    // for (auto it = container.begin_middle_out_order(); it != container.end_middle_out_order(); ++it) {
-    //     std::cout << *it << ' ';  // 6 15 1 7 2
-    // }
-    // std::cout << std::endl;
+    for (auto it = container.begin_middle_out_order(); it != container.end_middle_out_order(); ++it) {
+        std::cout << *it << ' ';  // 6 15 1 7 2
+    }
+    std::cout << std::endl;
 
   
 

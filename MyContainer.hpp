@@ -10,6 +10,7 @@
 #include "DescendingOrderIterator.hpp"
 #include "SideCrossOrderIterator.hpp"
 #include "ReverseOrderIterator.hpp"
+#include "MiddleOutOrderIterator.hpp"
 
 namespace ariel {
     template<typename T = int> //should default be int
@@ -21,6 +22,13 @@ namespace ariel {
         template<typename U> friend class AscendingOrderIterator;
 
         template<typename U> friend class DescendingOrderIterator;
+
+        template<typename U> friend class SideCrossOrderIterator;
+
+        template<typename U> friend class MiddleOutOrderIterator;
+
+        template<typename U> friend class ReverseOrderIterator;
+
         
 
         private:
@@ -84,6 +92,15 @@ namespace ariel {
 
             ReverseOrderIterator<T> end_reverse_order() {
                 return ReverseOrderIterator(data,data.size());
+            }
+
+
+            MiddleOutOrderIterator<T> begin_middle_out_order() {
+                return MiddleOutOrderIterator(data,0);
+            }
+
+            MiddleOutOrderIterator<T> end_middle_out_order() {
+                return MiddleOutOrderIterator(data,data.size());
             }
 
 
